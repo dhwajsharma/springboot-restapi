@@ -1,6 +1,7 @@
 package com.api.book.bootrestbook.services;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -33,6 +34,11 @@ public class BookService {
     public Book addBook(Book book) {
         list.add(book);
         return book;
+    }
+
+    // delete book
+    public void deleteBook(int id) {
+        list = list.stream().filter(book -> book.getId() != id).collect(Collectors.toList());
     }
 
 }
